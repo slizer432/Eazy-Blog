@@ -3,7 +3,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
-import GuestLayout from '@/Layouts/GuestLayout';
+import AuthLayout from '@/Layouts/AuthLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
 export default function Login({ status, canResetPassword }) {
@@ -22,7 +22,7 @@ export default function Login({ status, canResetPassword }) {
     };
 
     return (
-        <GuestLayout>
+        <AuthLayout title={"Welcome Back!"} description={"Sign in now and unlock exclusive access!"}>
             <Head title="Log in" />
 
             {status && (
@@ -67,20 +67,6 @@ export default function Login({ status, canResetPassword }) {
 
                 <div className="mt-4 block">
                     <label className="flex items-center">
-                        <Checkbox
-                            name="remember"
-                            checked={data.remember}
-                            onChange={(e) =>
-                                setData('remember', e.target.checked)
-                            }
-                        />
-                        <span className="ms-2 text-sm text-gray-600">
-                            Remember me
-                        </span>
-                    </label>
-                </div>
-
-                <div className="mt-4 flex items-center justify-end">
                     {canResetPassword && (
                         <Link
                             href={route('password.request')}
@@ -89,12 +75,25 @@ export default function Login({ status, canResetPassword }) {
                             Forgot your password?
                         </Link>
                     )}
+                    </label>
+                </div>
 
-                    <PrimaryButton className="ms-4" disabled={processing}>
-                        Log in
+                <div className="mt-4 flex items-center justify-end">
+                    <PrimaryButton className="w-full text-center" disabled={processing}>
+                        Login
                     </PrimaryButton>
                 </div>
+
+                <div className="mt-6 flex items-center justify-center gap-1">
+                    Don't have any account?
+                <Link
+                        href={route('register')}
+                        className="rounded-md text-sm font-semibold underline text-gray-900 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    >
+                        Sign Up
+                    </Link>
+                </div>
             </form>
-        </GuestLayout>
+        </AuthLayout>
     );
 }
