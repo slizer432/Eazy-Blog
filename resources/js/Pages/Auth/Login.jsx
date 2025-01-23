@@ -5,6 +5,7 @@ import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
 import AuthLayout from '@/Layouts/AuthLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
+import { useState } from 'react';
 
 export default function Login({ status, canResetPassword }) {
     const { data, setData, post, processing, errors, reset } = useForm({
@@ -12,6 +13,7 @@ export default function Login({ status, canResetPassword }) {
         password: '',
         remember: false,
     });
+    const [showPassword, setShowPassword] = useState(false);
 
     const submit = (e) => {
         e.preventDefault();
@@ -49,18 +51,21 @@ export default function Login({ status, canResetPassword }) {
                     <InputError message={errors.email} className="mt-2" />
                 </div>
 
-                <div className="mt-4">
+                <div className="mt-4 relative">
                     <InputLabel htmlFor="password" value="Password" />
 
                     <TextInput
                         id="password"
-                        type="password"
+                        type={`${showPassword ? "password" : "text"}`}
                         name="password"
                         value={data.password}
                         className="mt-1 block w-full"
                         autoComplete="current-password"
                         onChange={(e) => setData('password', e.target.value)}
                     />
+                    <button className="absolute bottom-2 right-3" onClick={()=> setShowPassword(!showPassword)} type="button">
+                        <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
+                    </button>
 
                     <InputError message={errors.password} className="mt-2" />
                 </div>
