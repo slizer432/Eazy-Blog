@@ -17,6 +17,9 @@ export default {
                 raleway: ['Raleway', ...defaultTheme.fontFamily.sans],
                 roboto: ['Roboto', ...defaultTheme.fontFamily.sans]
             },
+            backgroundImage: {
+                'hero-pattern': "url('https://i.pinimg.com/736x/33/3c/a2/333ca2c8e19b327d739b2a32e0fb5994.jpg')",
+            },
         },
     },
 
