@@ -24,11 +24,12 @@ const Navbar = ({ data }) => {
 
     return (
         <>
-            <nav className="border-b bg-white px-5 py-3 flex items-center justify-between w-full gap-5 sticky top-0 z-10">
+            <nav className="border-b bg-white px-5 py-3 w-full gap-5 sticky top-0 z-10">
+                <div className="flex items-center justify-between">
                 <ApplicationLogo className="block w-auto fill-current text-gray-800 font-extrabold text-xl" />
                 <div className="flex items-center gap-2 md:gap-5 w-full max-w-sm md:max-w-3xl justify-end sm:justify-between">
                     <label
-                        className="relative w-max sm:w-full sm:max-w-sm rounded-xl flex justify-end"
+                        className="relative w-full sm:max-w-sm rounded-xl flex justify-end"
                         htmlFor="search"
                     >
                         <i
@@ -37,9 +38,9 @@ const Navbar = ({ data }) => {
                         ></i>
 
                         <div
-                            className={`absolute sm:static left-0 top-10 transition-all duration-300 sm:translate-y-0 sm:opacity-100 sm:scale-100 sm:w-full sm:max-w-sm transform ${
+                            className={`fixed sm:static left-1/2 -translate-x-1/2 sm:-left-1/2  sm:translate-x-0 top-[65px] transition-all duration-300 sm:translate-y-0 sm:opacity-100 sm:scale-100 px-4 py-3 bg-gray-50 border-b sm:border-none sm:bg-transparent sm:p-0 w-full sm:max-w-sm transform ${
                                 showSearch
-                                    ? "block translate-y-0 opacity-100 scale-100 -translate-x-full"
+                                    ? "block translate-y-0 opacity-100 scale-100 "
                                     : "hidden sm:block -translate-y-5 opacity-0 scale-95"
                             }`}
                         >
@@ -47,7 +48,7 @@ const Navbar = ({ data }) => {
                                 ref={searchInputRef}
                                 id="search"
                                 name="search"
-                                className="sm:pl-9 w-56 sm:w-full rounded-xl border outline-none shadow-lg"
+                                className="sm:pl-9 w-full rounded-lg sm:rounded-xl border outline-none shadow-lg"
                                 autoComplete="search"
                                 placeholder="Search"
                             />
@@ -115,10 +116,12 @@ const Navbar = ({ data }) => {
 
                     <div className="-me-2 flex items-center md:hidden">
                         <button
-                            onClick={() =>
+                            onClick={() => {
                                 setShowingNavigationDropdown(
                                     (previousState) => !previousState
-                                )
+                                );
+                                setShowSearch(false);
+                                }
                             }
                             className="inline-flex items-center justify-center rounded-md p-2 text-gray-400 transition duration-150 ease-in-out hover:bg-gray-100 hover:text-gray-500 focus:bg-gray-100 focus:text-gray-500 focus:outline-none"
                         >
@@ -154,10 +157,10 @@ const Navbar = ({ data }) => {
                         </button>
                     </div>
                 </div>
-            </nav>
+                </div>
             <div
                 className={
-                    (showingNavigationDropdown ? "block bg-neutral-50" : "hidden") +
+                    (showingNavigationDropdown ? "block" : "hidden") +
                     " md:hidden"
                 }
             >
@@ -205,6 +208,7 @@ const Navbar = ({ data }) => {
                     </div>
                 </div>
             </div>
+            </nav>
         </>
     );
 };
