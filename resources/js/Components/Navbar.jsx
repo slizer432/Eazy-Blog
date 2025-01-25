@@ -5,6 +5,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import { useState, useRef } from "react";
+import PrimaryButton from "./PrimaryButton";
 
 const Navbar = ({ data }) => {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -27,7 +28,7 @@ const Navbar = ({ data }) => {
             <nav className="border-b bg-white px-5 py-3 w-full sticky top-0 z-10">
                 <div className="flex items-center gap-5 justify-between">
                     <ApplicationLogo className="block w-auto fill-current text-gray-800 font-extrabold text-xl" />
-                    <div className="flex items-center gap-2 md:gap-5 w-full max-w-sm md:max-w-3xl justify-end sm:justify-between">
+                    <div className="flex items-center gap-2 md:gap-5 w-full max-w-sm md:max-w-3xl justify-end">
                         <label
                             className="relative w-full sm:max-w-sm rounded-xl flex justify-end"
                             htmlFor="search"
@@ -62,9 +63,9 @@ const Navbar = ({ data }) => {
                                 Home
                             </NavLink>
                             <NavLink href={"#explore"}>Explore</NavLink>
-                            <NavLink href={"#write"}>Write</NavLink>
+                            {data && <NavLink href={"#write"}>Write</NavLink>}
                         </div>
-                        {data && (
+                        {data ? (
                             <>
                                 <button>
                                     <i className="fa-regular fa-bell fa-xl sm:fa-lg ms-2"></i>
@@ -119,7 +120,9 @@ const Navbar = ({ data }) => {
                                     </div>
                                 </div>
                             </>
-                        )}
+                        ) :  <Link href={route('login')}><PrimaryButton className="w-max rounded-lg hidden sm:block">
+                        Login
+                    </PrimaryButton></Link>}
 
                         <div className="-me-2 flex items-center md:hidden">
                             <button
@@ -180,12 +183,14 @@ const Navbar = ({ data }) => {
                         <ResponsiveNavLink href={"#explore"}>
                             Explore
                         </ResponsiveNavLink>
+                        {data &&
                         <ResponsiveNavLink href={"#write"}>
                             Write
                         </ResponsiveNavLink>
+                        }
                     </div>
 
-                    {data && 
+                    {data ? 
                     <div className="border-t border-gray-200 pb-1 pt-4">
                         <div className="px-4 flex items-center gap-3">
                             <img
@@ -216,7 +221,16 @@ const Navbar = ({ data }) => {
                             </ResponsiveNavLink>
                         </div>
                     </div>
-}
+                    : 
+                    <div className="border-t border-gray-200 pb-1 pt-4">
+                         <ResponsiveNavLink
+                                href={route("login")}
+                                as="button"
+                            >
+                                Login
+                            </ResponsiveNavLink>
+                    </div>
+                    }
                 </div>
             </nav>
         </>

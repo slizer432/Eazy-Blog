@@ -64,7 +64,7 @@ export default function Login({ status, canResetPassword }) {
                         onChange={(e) => setData('password', e.target.value)}
                     />
                     <button className="absolute bottom-2 right-3" onClick={()=> setShowPassword(!showPassword)} type="button">
-                        <i className={`fa-regular ${showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
+                        <i className={`fa-regular ${!showPassword ? "fa-eye" : "fa-eye-slash"}`}></i>
                     </button>
 
                     <InputError message={errors.password} className="mt-2" />
