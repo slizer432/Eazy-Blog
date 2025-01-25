@@ -64,57 +64,62 @@ const Navbar = ({ data }) => {
                             <NavLink href={"#explore"}>Explore</NavLink>
                             <NavLink href={"#write"}>Write</NavLink>
                         </div>
-                        <button>
-                            <i className="fa-regular fa-bell fa-xl sm:fa-lg ms-2"></i>
-                        </button>
-                        <div className="hidden md:flex md:items-center">
-                            <div className="relative">
-                                <Dropdown>
-                                    <Dropdown.Trigger>
-                                        <span className="inline-flex rounded-md">
-                                            <button
-                                                type="button"
-                                                className="inline-flex items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none w-max gap-2"
-                                            >
-                                                <img
-                                                    className="object-cover rounded-full size-10"
-                                                    src="https://i.pinimg.com/236x/e2/ed/d2/e2edd25dd680e8adf4c7a7a6e49999aa.jpg"
-                                                    alt=""
-                                                />
-                                                {data?.name}
-                                                <svg
-                                                    className="-me-0.5 ms-2 h-4 w-4 hidden md:block"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    viewBox="0 0 20 20"
-                                                    fill="currentColor"
-                                                >
-                                                    <path
-                                                        fillRule="evenodd"
-                                                        d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                                        clipRule="evenodd"
-                                                    />
-                                                </svg>
-                                            </button>
-                                        </span>
-                                    </Dropdown.Trigger>
+                        {data && (
+                            <>
+                                <button>
+                                    <i className="fa-regular fa-bell fa-xl sm:fa-lg ms-2"></i>
+                                </button>
 
-                                    <Dropdown.Content>
-                                        <Dropdown.Link
-                                            href={route("profile.edit")}
-                                        >
-                                            Profile
-                                        </Dropdown.Link>
-                                        <Dropdown.Link
-                                            href={route("logout")}
-                                            method="post"
-                                            as="button"
-                                        >
-                                            Log Out
-                                        </Dropdown.Link>
-                                    </Dropdown.Content>
-                                </Dropdown>
-                            </div>
-                        </div>
+                                <div className="hidden md:flex md:items-center">
+                                    <div className="relative">
+                                        <Dropdown>
+                                            <Dropdown.Trigger>
+                                                <span className="inline-flex rounded-md">
+                                                    <button
+                                                        type="button"
+                                                        className="inline-flex items-center rounded-md border border-transparent px-3 py-2 text-sm font-medium leading-4 text-gray-500 transition duration-150 ease-in-out hover:text-gray-700 focus:outline-none w-max gap-2"
+                                                    >
+                                                        <img
+                                                            className="object-cover rounded-full size-10"
+                                                            src="https://i.pinimg.com/236x/e2/ed/d2/e2edd25dd680e8adf4c7a7a6e49999aa.jpg"
+                                                            alt=""
+                                                        />
+                                                        {data?.name}
+                                                        <svg
+                                                            className="-me-0.5 ms-2 h-4 w-4 hidden md:block"
+                                                            xmlns="http://www.w3.org/2000/svg"
+                                                            viewBox="0 0 20 20"
+                                                            fill="currentColor"
+                                                        >
+                                                            <path
+                                                                fillRule="evenodd"
+                                                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                                clipRule="evenodd"
+                                                            />
+                                                        </svg>
+                                                    </button>
+                                                </span>
+                                            </Dropdown.Trigger>
+
+                                            <Dropdown.Content>
+                                                <Dropdown.Link
+                                                    href={route("profile.edit")}
+                                                >
+                                                    Profile
+                                                </Dropdown.Link>
+                                                <Dropdown.Link
+                                                    href={route("logout")}
+                                                    method="post"
+                                                    as="button"
+                                                >
+                                                    Log Out
+                                                </Dropdown.Link>
+                                            </Dropdown.Content>
+                                        </Dropdown>
+                                    </div>
+                                </div>
+                            </>
+                        )}
 
                         <div className="-me-2 flex items-center md:hidden">
                             <button
@@ -180,6 +185,7 @@ const Navbar = ({ data }) => {
                         </ResponsiveNavLink>
                     </div>
 
+                    {data && 
                     <div className="border-t border-gray-200 pb-1 pt-4">
                         <div className="px-4 flex items-center gap-3">
                             <img
@@ -210,6 +216,7 @@ const Navbar = ({ data }) => {
                             </ResponsiveNavLink>
                         </div>
                     </div>
+}
                 </div>
             </nav>
         </>
