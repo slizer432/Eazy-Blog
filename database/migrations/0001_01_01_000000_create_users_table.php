@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('username');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
-            $table->timestamps();
+            $table->id(); // Kolom 'id' dengan auto-increment
+            $table->string('name', 100); // Kolom 'name' dengan panjang maksimal 100 karakter
+            $table->string('email', 255)->unique(); // Kolom 'email' unik dengan panjang maksimal 255 karakter
+            $table->string('password', 255); // Kolom 'password' dengan panjang maksimal 255 karakter
+            $table->timestamps(); // Kolom 'created_at' dan 'updated_at' otomatis
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {
