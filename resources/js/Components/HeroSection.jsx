@@ -3,7 +3,7 @@ import SecondaryButton from "./SecondaryButton";
 
 const HeroSection = () => {
     return (
-        <div className="relative h-[89.75vh] sm:h-[87vh] bg-hero-pattern bg-cover bg-center w-full">
+        <div className="relative h-[580px] bg-hero-pattern bg-cover bg-center w-full">
             <div class="absolute inset-0 bg-black bg-opacity-50"></div>
 
             <div class="relative text-white p-4 h-full max-w-lg sm:max-w-2xl flex flex-col justify-center gap-5 sm:pl-14">

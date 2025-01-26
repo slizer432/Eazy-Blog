@@ -8,12 +8,8 @@ import { useState } from 'react';
 
 export default function AuthenticatedLayout({ header, children }) {
     const user = usePage().props.auth.user;
-
-    const [showingNavigationDropdown, setShowingNavigationDropdown] =
-        useState(false);
-
     return (
-        <div className="min-h-screen bg-gray-100 relative">
+        <div className="min-h-screen bg-gray-100 relative mx-auto w-full max-w-[1400px]">
            <Navbar data={user}/>
 
             {header && (
