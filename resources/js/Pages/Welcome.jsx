@@ -1,7 +1,9 @@
 import BlogCard from "@/Components/BlogCard";
 import BlogContent from "@/Components/BlogContent";
 import FeaturedSection from "@/Components/FeaturedSection";
+import Footer from "@/Components/Footer";
 import HeroSection from "@/Components/HeroSection";
+import Jumbotron from "@/Components/Jumbotron";
 import SecondaryButton from "@/Components/SecondaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import BlogLayout from "@/Layouts/BlogLayout";
@@ -44,6 +46,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         <BlogCard />
                     </BlogLayout>
                 </div>
+                <Jumbotron />
+                <Footer />
             </AuthenticatedLayout>
         </>
     );
