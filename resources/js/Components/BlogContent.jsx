@@ -1,6 +1,6 @@
 import { Link } from "@inertiajs/react";
 
-const BlogContent = ({ typeContent = "card" }) => {
+const BlogContent = ({ typeContent = "card", data }) => {
     const isFeature = typeContent === "feature";
 
     return (
@@ -15,14 +15,14 @@ const BlogContent = ({ typeContent = "card" }) => {
                         isFeature ? "md:text-sm" : ""
                     }`}
                 >
-                    Development
+                    {data?.category}
                 </p>
                 <p
                     className={`text-xs font-medium text-gray-500 ${
                         isFeature ? "md:text-sm" : ""
                     }`}
                 >
-                    16 January 2025
+                    {data?.publishDate}
                 </p>
             </span>
             <h1
@@ -32,15 +32,10 @@ const BlogContent = ({ typeContent = "card" }) => {
                         : "text-base md:text-lg"
                 }`}
             >
-                How to Enhance a Game's Appeal Using the Latest VR and AI
-                Technology
+                {data?.title}
             </h1>
             <p className="text-gray-600 w-[95%] text-xs sm:text-sm line-clamp-2 sm:line-clamp-3 md:line-clamp-4">
-                Google has long invested in AI, aiming to deliver its advantages
-                to individuals, businesses, and communities. From publishing
-                cutting-edge research and creating useful products to developing
-                tools and resources that empower others, Google remains
-                dedicated to making AI accessible to all.
+                {data?.desc}
             </p>
             <Link
                 href={"#"}
