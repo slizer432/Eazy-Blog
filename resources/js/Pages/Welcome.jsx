@@ -1,7 +1,9 @@
 import BlogCard from "@/Components/BlogCard";
 import BlogContent from "@/Components/BlogContent";
 import FeaturedSection from "@/Components/FeaturedSection";
+import Footer from "@/Components/Footer";
 import HeroSection from "@/Components/HeroSection";
+import Jumbotron from "@/Components/Jumbotron";
 import SecondaryButton from "@/Components/SecondaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import BlogLayout from "@/Layouts/BlogLayout";
@@ -9,6 +11,14 @@ import { Head, Link } from "@inertiajs/react";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     const user = auth.user;
+    const data = {
+        img: "https://i.pinimg.com/736x/f1/33/64/f13364d58fe0767ea741b6cd11d17d7a.jpg",
+        title: "How to Enhance a Game's Appeal Using the Latest VR and AI Technology",
+        desc: "Google has long invested in AI, aiming to deliver its advantages to individuals, businesses, and communities. From publishing cutting-edge research and creating useful products to developing tools and resources that empower others, Google remains dedicated to making AI accessible to all.",
+        publishDate: "May 1, 2023",
+        category: "DEVELOPMENT",
+    };
+
     return (
         <>
             <AuthenticatedLayout>
@@ -26,24 +36,26 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     alt=""
                                 />
                             </div>
-                            <BlogContent typeContent="feature" />
+                            <BlogContent typeContent="feature" data={data} />
                         </div>
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
                     </BlogLayout>
                     <BlogLayout title="Popular Post">
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
-                        <BlogCard />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
+                        <BlogCard data={data} />
                     </BlogLayout>
                 </div>
+                <Jumbotron />
+                <Footer />
             </AuthenticatedLayout>
         </>
     );

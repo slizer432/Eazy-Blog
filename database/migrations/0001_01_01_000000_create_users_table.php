@@ -20,6 +20,22 @@ return new class extends Migration
             $table->timestamps(); // Kolom 'created_at' dan 'updated_at' otomatis
         });
 
+        Schema::create('userProfiles', function (Blueprint $table) {
+            $table->id('ProfileID'); // Kolom 'ProfileID' dengan auto-increment (Primary Key)
+            $table->bigInteger('UserID'); // Kolom 'UserID' sesuai dengan DDL yang Anda berikan
+            $table->string('Bio', 255)->nullable(); // Kolom 'bio' dengan panjang maksimal 255 karakter
+            $table->string('Gender', 10)->nullable(); // Kolom 'gender' dengan panjang maksimal 10 karakter
+            $table->string('ProfilePicture', 255)->nullable(); // Kolom 'profile_picture' dengan panjang maksimal 255 karakter
+            $table->string('InterestedTopics', 255)->nullable(); // Kolom 'interested_topics' dengan panjang maksimal 255 karakter
+            $table->timestamp('RegisteredSince')->nullable(); // Kolom 'registered_since' untuk waktu registrasi, nullable
+            $table->timestamps(); // Kolom 'created_at' dan 'updated_at' otomatis
+
+            // Menambahkan foreign key yang mengacu ke kolom 'id' pada tabel 'users'
+            $table->foreign('UserID', 'FK__UserProfi__UserI__531856C7') // Nama constraint yang jelas
+                  ->references('id')->on('users')
+                  ->onDelete('cascade');
+        });
+
         // Tabel UserProfiles
         Schema::create('userProfiles', function (Blueprint $table) {
             $table->id('ProfileID'); // Kolom 'ProfileID' dengan auto-increment (Primary Key)
@@ -110,6 +126,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        // Menghapus tabel-tabel terkait
         // Menghapus foreign key sebelum menghapus tabel
         Schema::table('userProfiles', function (Blueprint $table) {
             $table->dropForeign('userprofiles_userid_foreign');
@@ -136,5 +153,6 @@ return new class extends Migration
         Schema::dropIfExists('comments');
         Schema::dropIfExists('password_reset_tokens');
         Schema::dropIfExists('sessions');
+        Schema::dropIfExists('userProfiles');
     }
 };

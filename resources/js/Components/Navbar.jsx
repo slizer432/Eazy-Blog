@@ -62,7 +62,7 @@ const Navbar = ({ data }) => {
                             >
                                 Home
                             </NavLink>
-                            <NavLink href={"#explore"}>Explore</NavLink>
+                            <NavLink href={"explore"}>Explore</NavLink>
                             {data && <NavLink href={"#write"}>Write</NavLink>}
                         </div>
                         {data ? (
@@ -120,9 +120,13 @@ const Navbar = ({ data }) => {
                                     </div>
                                 </div>
                             </>
-                        ) :  <Link href={route('login')}><PrimaryButton className="w-max rounded-lg hidden sm:block">
-                        Login
-                    </PrimaryButton></Link>}
+                        ) : (
+                            <Link href={route("login")}>
+                                <PrimaryButton className="w-max rounded-lg hidden sm:block">
+                                    Login
+                                </PrimaryButton>
+                            </Link>
+                        )}
 
                         <div className="-me-2 flex items-center md:hidden">
                             <button
@@ -183,54 +187,54 @@ const Navbar = ({ data }) => {
                         <ResponsiveNavLink href={"#explore"}>
                             Explore
                         </ResponsiveNavLink>
-                        {data &&
-                        <ResponsiveNavLink href={"#write"}>
-                            Write
-                        </ResponsiveNavLink>
-                        }
+                        {data && (
+                            <ResponsiveNavLink href={"#write"}>
+                                Write
+                            </ResponsiveNavLink>
+                        )}
                     </div>
 
-                    {data ? 
-                    <div className="border-t border-gray-200 pb-1 pt-4">
-                        <div className="px-4 flex items-center gap-3">
-                            <img
-                                className="object-cover rounded-full size-16"
-                                src="https://i.pinimg.com/236x/e2/ed/d2/e2edd25dd680e8adf4c7a7a6e49999aa.jpg"
-                                alt=""
-                            />
-                            <div className="">
-                                <div className="text-base font-medium text-gray-800">
-                                    {data?.name}
-                                </div>
-                                <div className="text-sm font-medium text-gray-500">
-                                    {data?.email}
+                    {data ? (
+                        <div className="border-t border-gray-200 pb-1 pt-4">
+                            <div className="px-4 flex items-center gap-3">
+                                <img
+                                    className="object-cover rounded-full size-16"
+                                    src="https://i.pinimg.com/236x/e2/ed/d2/e2edd25dd680e8adf4c7a7a6e49999aa.jpg"
+                                    alt=""
+                                />
+                                <div className="">
+                                    <div className="text-base font-medium text-gray-800">
+                                        {data?.name}
+                                    </div>
+                                    <div className="text-sm font-medium text-gray-500">
+                                        {data?.email}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route("profile.edit")}>
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                method="post"
-                                href={route("logout")}
-                                as="button"
-                            >
-                                Log Out
-                            </ResponsiveNavLink>
+                            <div className="mt-3 space-y-1">
+                                <ResponsiveNavLink href={route("profile.edit")}>
+                                    Profile
+                                </ResponsiveNavLink>
+                                <ResponsiveNavLink
+                                    method="post"
+                                    href={route("logout")}
+                                    as="button"
+                                >
+                                    Log Out
+                                </ResponsiveNavLink>
+                            </div>
                         </div>
-                    </div>
-                    : 
-                    <div className="border-t border-gray-200 pb-1 pt-4">
-                         <ResponsiveNavLink
+                    ) : (
+                        <div className="border-t border-gray-200 pb-1 pt-4">
+                            <ResponsiveNavLink
                                 href={route("login")}
                                 as="button"
                             >
                                 Login
                             </ResponsiveNavLink>
-                    </div>
-                    }
+                        </div>
+                    )}
                 </div>
             </nav>
         </>
