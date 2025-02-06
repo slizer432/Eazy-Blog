@@ -10,8 +10,7 @@ import BlogLayout from "@/Layouts/BlogLayout";
 import { Head, Link } from "@inertiajs/react";
 import { Clock, MessageSquare, User, User2 } from "lucide-react";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const user = auth.user;
+export default function Explore() {
     const data = {
         img: "https://i.pinimg.com/736x/f1/33/64/f13364d58fe0767ea741b6cd11d17d7a.jpg",
         title: "How to Enhance a Game's Appeal Using the Latest VR and AI Technology",
