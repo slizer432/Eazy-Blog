@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\ProfileController;
 use App\Models\explore;
@@ -27,5 +28,7 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('explore', ExploreController::class);
+
+Route::resource('blog', BlogController::class);
 
 require __DIR__ . '/auth.php';
