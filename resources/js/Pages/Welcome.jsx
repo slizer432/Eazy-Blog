@@ -4,13 +4,11 @@ import FeaturedSection from "@/Components/FeaturedSection";
 import Footer from "@/Components/Footer";
 import HeroSection from "@/Components/HeroSection";
 import Jumbotron from "@/Components/Jumbotron";
-import SecondaryButton from "@/Components/SecondaryButton";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import BlogLayout from "@/Layouts/BlogLayout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Welcome({ auth, laravelVersion, phpVersion }) {
-    const user = auth.user;
+export default function Welcome() {
     const data = {
         img: "https://i.pinimg.com/736x/f1/33/64/f13364d58fe0767ea741b6cd11d17d7a.jpg",
         title: "How to Enhance a Game's Appeal Using the Latest VR and AI Technology",
