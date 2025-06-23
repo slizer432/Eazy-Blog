@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use Hash;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Tag>
  */
-class UserFactory extends Factory
+class TagFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,10 +17,8 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'username' => fake()->unique()->userName(),
-            'email' => fake()->unique()->safeEmail(),
-            'password' => Hash::make('12345678'),
-            'role' => 'user',
+            'name' => fake()->word(),
+            'slug' => fake()->slug(),
             'created_at' => now(),
             'updated_at' => now(),
         ];
