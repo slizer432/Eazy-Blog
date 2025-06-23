@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'content' => fake()->paragraph(),
             'image' => fake()->imageUrl(640, 480, 'nature', true, 'Post Image'),
             'created_at' => now(),
+            'updated_at' => now(),
         ];
     }
 }
