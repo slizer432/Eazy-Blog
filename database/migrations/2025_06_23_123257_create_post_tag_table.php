@@ -12,7 +12,7 @@ return new class extends Migration {
     {
         Schema::create('post_tag', function (Blueprint $table) {
             $table->foreignId('post_id')
-                ->constrained('posts')
+                ->constrained()
                 ->onDelete('cascade');
             $table->foreignId('tag_id')
                 ->constrained('tags')
